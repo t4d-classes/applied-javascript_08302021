@@ -30,17 +30,33 @@
     }, delay());
   });
 
-  const doAllTasks = async () => {
-  
-    const results = await Promise.all([ doTaskA(), doTaskB(), doTaskC() ]);
+  // const doAllTasks = () => {
 
-    console.log(results);
-    console.log("all done");
-  
+  //   return doTaskA()
+  //     .then((r) => {
+  //       console.log(r);
+  //       return doTaskB();
+  //     })
+  //     .then((r) => {
+  //       console.log(r);
+  //       return doTaskC();
+  //     })
+  //     .then(r => {
+  //       console.log(r);
+  //     });
+
+  // };
+
+  const doAllTasks = async () => {
+
+    console.log(await doTaskA());
+    console.log(await doTaskB());
+    console.log(await doTaskC());
+
   };
 
   doAllTasks().then(() => {
-    console.log('all done, go to the kitchen!');
+    console.log("all done, go home...");
   });
 
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  function outer() {
+
+    let t = 2;
+
+    return function inner() {
+      console.log(t);
+    };
+  }
+
+  const innerFn = outer();
+
+  innerFn();
+
+  console.dir(innerFn);
+
+
+</script>

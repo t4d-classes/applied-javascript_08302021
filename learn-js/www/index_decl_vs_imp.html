@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  const nums = [1,2,3,4,5];
+  const doubleNums = [];
+
+  // imperative code - how (traditional for-loop), what (doubling a number)
+  // very little semantic meaning
+  for (let x=0; x<nums.length; x++) {
+    doubleNums.push(nums[x] * 2);
+  }
+
+  console.log(nums);
+  console.log(doubleNums);
+
+  // declarative code - what (doubling a number)
+  // has rich semantic meaning
+  const doubleNums2 = nums.map(x => x * 2);
+
+  console.log(nums);
+  console.log(doubleNums2);
+
+  const msgs = ['a','b','c','d'];
+
+
+</script>

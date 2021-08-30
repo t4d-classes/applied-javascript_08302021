@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  const parent = {
+    name: 'parent',
+    fullName: function() {
+      return this.firstName + ' ' + this.lastName;
+    },
+  };
+
+  const child1 = Object.create(parent);
+  child1.firstName = 'Bob';
+  child1.lastName = 'Smith';
+
+  const child2 = Object.create(parent);
+  child2.firstName = 'Timothy';
+  child2.lastName = 'Tomlin';
+
+  console.log(child1.fullName());
+  console.log(child2.fullName());
+
+  console.log(child1.fullName === child2.fullName);
+
+</script>

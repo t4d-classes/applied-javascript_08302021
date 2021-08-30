@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  function doIt({ firstName, lastName, address: { state, city } } /* object destructuring */) {
+    console.log(city, state);
+  }
+
+  // const p = { 
+  //   firstName: 'Bob',
+  //   lastName: 'Smith',
+  // };
+
+  doIt({ 
+    firstName: 'Bob',
+    lastName: 'Smith',
+    address: {
+      street: '123 Oak Lane',
+      city: 'Redlands',
+      state: 'CA',
+    }
+  } /* expression, object literal */);
+
+
+
+</script>

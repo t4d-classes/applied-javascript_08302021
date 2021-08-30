@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  // setTimeout(function() {
+  //   console.log("hello");
+  // }, 0);
+
+  // console.log("looks like rain today...");
+
+  const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+  // setTimeout(() => {
+  //     console.log('a');
+  //     setTimeout(() => {
+  //         console.log('b');
+  //         setTimeout(() => {
+  //             console.log('c');
+  //         }, delay());
+  //     }, delay());
+  // }, delay());
+
+  // function allDone() {
+  //   console.log("all done");
+  // }
+
+  // let counter = 0;
+
+  // counter++;
+  // setTimeout(() => {
+  //   console.log('a');
+  //   counter--;
+  //   if (counter === 0) {
+  //     allDone();
+  //   }
+  // }, delay());
+
+  // counter++;
+  // setTimeout(() => {
+  //   console.log('b');
+  //   counter--;
+  //   if (counter === 0) {
+  //     allDone();
+  //   }
+  // }, delay());
+
+  // counter++;
+  // setTimeout(() => {
+  //   console.log('c');
+  //   counter--;
+  //   if (counter === 0) {
+  //     allDone();
+  //   }
+  // }, delay());
+
+  class Promise2 {
+
+    constructor(fn) {
+
+      this.resolveFns = [];
+      this.rejectFns = [];
+
+      const resolveFn = (result) => {
+        this.resolveFns.forEach((resFn) => {
+          resFn(result);
+        });
+      };
+
+      const rejectFn = () => {
+        this.rejectFns.forEach((rejFn) => {
+          rejFn(result);
+        });
+      };
+
+      fn(resolveFn, rejectFn);
+    }
+
+    then(fn) {
+      this.resolveFns.push(fn);
+    }
+
+    catch(fn) {
+      this.rejectFns.push(fn);
+    }
+  }
+
+  const p = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+      reject("it works!");
+    }, 2000);
+
+  });
+
+  p
+    .then(result => {
+      console.log("yay all worked out!");
+      console.log(result);
+    })
+    .catch(result => {
+      console.log("sorry something went wrong!");
+      console.log(result);
+    });
+
+  console.log('here');
+
+
+
+</script>

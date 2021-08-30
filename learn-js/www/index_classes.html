@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  class Person {
+
+    constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
+    }
+  }
+
+  class Student extends Person {
+
+    constructor(studentId, firstName, lastName) {
+      super(firstName, lastName);
+      this.studentId = studentId;
+    }
+
+    recordInfo() {
+      return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+    }
+
+  }
+
+  const s = new Student(1, 'Bob', 'Smith');
+  console.log(s.fullName());
+  console.log(s.recordInfo());
+
+  function Person2(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  Person2.prototype.fullName = function() {
+    return this.firstName + ' ' + this.lastName;
+  };
+
+  function Student2(studentId, firstName, lastName) {
+    this._super(firstName, lastName);
+    this.studentId = studentId;
+  }
+
+  Student2.prototype = Object.create(Person2.prototype);
+  Student2.prototype.constructor = Student2;
+  Student2.prototype._super = Person2;
+
+  Student2.prototype.recordInfo = function() {
+    return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+  }
+
+
+  const s2 = new Student2(2, 'Sally', 'Franks');
+  console.log(s2.fullName());
+  console.log(s2.recordInfo());
+
+  console.log(s);
+  console.log(s2);
+  console.dir(Student);
+  console.dir(Student2);
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  function doIt({ firstName: fn /* aliasing */, lastName: ln } /* object destructuring */) {
+
+    // const firstName = person.firstName;
+    // const { firstName } /* variable decl */ = person; // object destructuring
+
+    // const { firstName, lastName } = person;
+
+    // console.log(firstName + ' ' + lastName);
+    console.log(fn + ' ' + ln);
+  }
+
+  // const p = { 
+  //   firstName: 'Bob',
+  //   lastName: 'Smith',
+  // };
+
+  doIt({ 
+    firstName: 'Bob',
+    lastName: 'Smith',
+  } /* expression, object literal */);
+
+
+
+</script>

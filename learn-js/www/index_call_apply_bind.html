@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  function doIt(a,b,c) {
+    console.log(this);
+    console.log(a,b,c);
+  }
+
+  doIt(1,2,3);
+
+  doIt.call({ id: 2 }, 1,2,3); // replaced by arrow functions
+
+  doIt(...[1,2,3]);
+
+  doIt.apply({ id: 2 }, [1,2,3]); // replaced by the argument spread operator
+
+  const doIt2 = doIt.bind({ id: 2 }, 1);
+
+  doIt2(8,9);
+
+</script>

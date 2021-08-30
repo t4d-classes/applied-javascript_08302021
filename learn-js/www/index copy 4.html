@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  const parent = {
+    name: 'parent',
+    amt: 2000,
+  };
+
+  const child = Object.create(parent);
+  child.name = 'child';
+
+  console.log(child.amt);
+
+  console.log(child);
+
+  parent.amt = 4000;
+
+  console.log(child.amt);
+
+  child.amt = 1000;
+
+  console.log(child.amt);
+  console.log(parent.amt);
+
+  console.log(child);
+
+  delete child.amt;
+
+  console.log(child.amt);
+
+  // new amt property on the child
+  child.amt = child.amt; // refers to the amt property on the parent;
+
+  // class ItemList extends React.Component {
+
+  //   constructor(props) {
+  //     super(props);
+
+  //     this.onChange = this.onChange.bind(this);
+  //   }
+
+  //   onChange(e) {
+  //     this.setState()
+  //   }
+  // }
+
+
+</script>

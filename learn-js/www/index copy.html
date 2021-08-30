@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  function jsIsCool() {
+    console.log("js is cool");
+
+    setTimeout(function cool() {
+      console.log("did another one...");
+    }, 2000);
+  }
+
+  setTimeout(function TimeoutCallback() {
+    console.log("called timeout callback");
+    jsIsCool();
+  }, 2000);
+
+</script>

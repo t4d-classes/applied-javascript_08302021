@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  'use strict';
+
+  // Array.prototype.fmap = function(transformFn) {
+
+  //   const newArr = [];
+
+  //   for (let x=0; x<this.length; x++) {
+  //     newArr.push(transformFn(this[x]));
+  //   }
+
+  //   return newArr;
+  // }
+
+  Array.prototype.map = function() {
+    console.log("you've been hacked!");
+  }
+
+
+  const nums = [1,2,3,4,5];
+
+  const doubleNums = nums.map(x => x * 2);
+
+  console.log(doubleNums);
+
+</script>
