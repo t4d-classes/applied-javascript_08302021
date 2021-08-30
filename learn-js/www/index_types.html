@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  let t;
+
+  console.log(typeof t);
+
+  t = "hello";
+  console.log(typeof t);
+
+  t = 5;
+  console.log(typeof t);
+
+  t = true;
+  console.log(typeof t);
+
+  t = Symbol("some symbol");
+  console.log(typeof t);
+
+  // t = BigInt(234);
+  t = 234n;
+  console.log(typeof t);
+
+  t = null;
+  console.log(typeof t); // object
+
+  // created with object literal syntax
+  t = {
+    firstName: 'Bob', // property, key(string)=value(any type)
+    lastName: 'Smith',
+  };
+  console.log(typeof t); // object
+  console.log(t instanceof Object);
+
+  // array literal
+  t = [1,2,3,4,5];
+  console.log(typeof t); // object
+  console.log(t instanceof Array);
+
+  t = function() {
+    console.log('do it');
+  }
+  console.log(typeof t); // function
+  console.dir(t);
+  console.dir(t.__proto__);
+  console.log(t instanceof Object);
+
+  t = new Date();
+  console.log(typeof t); // function
+  console.log(t instanceof Date);
+
+
+
+</script>

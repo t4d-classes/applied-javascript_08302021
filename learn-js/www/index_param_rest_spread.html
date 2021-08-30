@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<h1>Learn JS</h1>
+
+<script>
+
+  function doIt(a,b, ...c /* rest parameter (using the rest operator), variable decl */) {
+    console.log(a,b,c);
+  }
+
+  doIt(1, 2, 3, 4);
+
+  function doIt2(a,b,c) {
+    console.log(a,b,c);
+  }
+
+  const args = [1,2,3];
+
+  doIt2(...args /* spread operator, expression */);
+
+
+
+</script>
