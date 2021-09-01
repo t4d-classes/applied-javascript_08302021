@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const CarEditRow = ({ car, onSaveCar, onCancelCar }) => {
+export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
 
   const [ carForm, setCarForm ] = useState({
     make: car.make,
@@ -14,6 +14,13 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar }) => {
     setCarForm({
       ...carForm,
       [ e.target.name ]: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+    });
+  };
+
+  const saveCar = () => {
+    onSaveCar({
+      ...carForm,
+      id: car.id,
     });
   };
 
@@ -32,8 +39,8 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar }) => {
       <td><input type="text" name="price"
           value={carForm.price} onChange={change} /></td>
       <td>
-        <button type="button" onClick={() => null}>Save</button>
-        <button type="button" onClick={() => null}>Cancel</button>
+        <button type="button" onClick={saveCar}>Save</button>
+        <button type="button" onClick={cancelCar}>Cancel</button>
       </td>
     </tr>
   );  

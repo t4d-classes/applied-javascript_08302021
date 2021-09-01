@@ -1,6 +1,6 @@
 # Exercise 9
 
-- Fully implement save car and cancel car buttons. Be sure to perform your save operation with immutable programming techniques. When the cancel button is clicked, revert the changes back to the original.
+- Fully implement save car and cancel car buttons. Be sure to perform your save operation with immutable programming techniques. You should not mutate any objects when saving. When the cancel button is clicked, revert the changes back to the original.
 
 Hint: To do the save, you can copy the array, next replace the item in the copy, then save the new array. A function such as findIndex can be used to find the index of an item.
 
