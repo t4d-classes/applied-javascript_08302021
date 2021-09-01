@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { carPropType } from '../proptypes/cars';
 
-export const CarViewRow = ({ car, onDeleteCar }) => {
+export const CarViewRow = ({ car, onEditCar, onDeleteCar }) => {
 
   return (
     <tr>
@@ -12,9 +12,12 @@ export const CarViewRow = ({ car, onDeleteCar }) => {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>{car.price}</td>
-      <td><button type="button" onClick={() => onDeleteCar(car.id)}>Delete</button></td>
+      <td>
+        <button type="button" onClick={() => onEditCar(car.id)}>Edit</button>
+        <button type="button" onClick={() => onDeleteCar(car.id)}>Delete</button>
+      </td>
     </tr>
-  )
+  );
 
 };
 

@@ -11,6 +11,8 @@ export const CarTool = ({ cars: initialCars }) => {
 
   const [ cars, setCars ] = useState([ ...initialCars ]);
 
+  const [ editCarId, setEditCarId ] = useState(-1);
+
   const appendCar = (car) => {
 
     setCars([
@@ -29,7 +31,8 @@ export const CarTool = ({ cars: initialCars }) => {
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={cars} onDeleteCar={removeCar} />
+      <CarTable cars={cars} editCarId={editCarId}
+        onEditCar={setEditCarId} onDeleteCar={removeCar}  />
       <CarForm buttonText="Add Car" onSubmitCar={appendCar} />
       <ToolFooter companyName="A Cool Company, Inc." />
     </>
