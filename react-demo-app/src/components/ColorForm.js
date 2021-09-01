@@ -1,19 +1,13 @@
-import { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 
 
 export const ColorForm = ({ buttonText, onSubmitColor }) => {
 
-  const [ colorForm, setColorForm ] = useState({ name: '', hexcode: '' });
-
-  const change = (e) => {
-    setColorForm({
-      ...colorForm, // copy the properties from the orignal color form in to the new one
-      [ e.target.name ]: e.target.value,
-    });
-  };
+  const [ colorForm, change, resetColorForm ] = useForm({ name: '', hexcode: '' });
 
   const submitColor = () => {
     onSubmitColor({ ...colorForm }); // invoke addColor
+    resetColorForm();
   };
 
   return (
