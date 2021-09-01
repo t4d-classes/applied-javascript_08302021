@@ -1,34 +1,37 @@
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-export const CarTool = ({ cars }) => {
+import { carsPropType } from "../proptypes/cars";
+
+import { ToolHeader } from './ToolHeader';
+import { CarTable } from './CarTable';
+import { CarForm } from './CarForm';
+import { ToolFooter } from './ToolFooter';
+
+export const CarTool = ({ cars: initialCars }) => {
+
+  const [ cars, setCars ] = useState([ ...initialCars ]);
+
+  const appendCar = (car) => {
+
+    setCars([
+      ...cars,
+      {
+        ...car, id: Math.max(...cars.map(c => c.id), 0) + 1,
+      }
+    ])
+
+  };
+
+  const removeCar = (carId) => {
+    setCars(cars.filter(c => c.id !== carId));
+  };
 
   return (
     <>
-      <header>
-        <h1>Car Tool</h1>
-      </header>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cars.map(car => <tr key={car.id}>
-            <td>{car.id}</td>
-            <td>{car.make}</td>
-            <td>{car.model}</td>
-            <td>{car.year}</td>
-            <td>{car.color}</td>
-            <td>{car.price}</td>
-          </tr>)}
-        </tbody>
-      </table>    
+      <ToolHeader headerText="Car Tool" />
+      <CarTable cars={cars} onDeleteCar={removeCar} />
+      <CarForm buttonText="Add Car" onSubmitCar={appendCar} />
+      <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
 
@@ -39,12 +42,5 @@ CarTool.defaultProps = {
 };
 
 CarTool.propTypes = {
-  cars: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    make: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-  })),
+  cars: carsPropType,
 };

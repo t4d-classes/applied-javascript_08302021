@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
+import { colorsPropType } from '../proptypes/colors';
+
+import { ToolHeader } from './ToolHeader';
+import { ColorList } from './ColorList';
 import { ColorForm } from './ColorForm';
+import { ToolFooter } from './ToolFooter';
+
 
 export const ColorTool = (props) => {
 
@@ -19,15 +24,11 @@ export const ColorTool = (props) => {
 
   return (
     <>
-      <header>
-        <h1>Color Tool</h1>
-      </header>
-      <ul>
-        {colors.map(color =>
-          <li key={color.id}>{color.name}</li>)}
-      </ul>
+      <ToolHeader headerText="Color Tool" />
+      <ColorList colors={colors} />
       <ColorForm buttonText="Add Color"
         onSubmitColor={addColor} />
+      <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
 
@@ -38,8 +39,5 @@ ColorTool.defaultProps = {
 };
 
 ColorTool.propTypes = {
-  colors: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  })),
+  colors: colorsPropType,
 };
