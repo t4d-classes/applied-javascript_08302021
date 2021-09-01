@@ -35,11 +35,16 @@ export const CarTool = ({ cars: initialCars }) => {
     setEditCarId(-1);
   };
 
+  const editCar = (carId) => {
+    console.log(carId);
+    setEditCarId(carId);
+  };
+
   return (
     <>
       <ToolHeader headerText="Car Tool" />
       <CarTable cars={cars} editCarId={editCarId}
-        onEditCar={setEditCarId} onDeleteCar={removeCar}
+        onEditCar={editCar} onDeleteCar={removeCar}
         onSaveCar={replaceCar} onCancelCar={cancelCar}  />
       <CarForm buttonText="Add Car" onSubmitCar={appendCar} />
       <ToolFooter companyName="A Cool Company, Inc." />
