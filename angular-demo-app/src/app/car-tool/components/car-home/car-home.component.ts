@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 import { Car } from '../../models/cars';
 
 
@@ -18,10 +20,33 @@ export class CarHomeComponent implements OnInit {
     { id: 2, make: 'Tesla', model: 'S', year: 2019, color: 'red', price: 110000 },
   ];
 
-  constructor() { }
+  carForm!: FormGroup;
+ 
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
 
   }
+
+  ngOnInit(): void {
+    this.carForm = this.fb.group({
+      make: '',
+      model: '',
+      year: 1900,
+      color: '',
+      price: 0,
+    });
+  }
+
+  addCar() {
+    this.cars = [
+      ...this.cars,
+      {
+        ...this.carForm.value,
+        id: Math.max(...this.cars.map(c => c.id), 0) + 1,
+      }
+    ];
+
+    this.carForm.reset();
+  }  
 
 }
