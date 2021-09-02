@@ -6,14 +6,4 @@
 
 <section class="app-color-list" [colors]="colors"></section>
 
-<form [formGroup]="colorForm">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
-  <label>
-    Hexcode:
-    <input type="text" formControlName="hexcode" />
-  </label>
-  <button (click)="addColor()">Add Color</button>
-</form>
+<app-color-form buttonText="Add Color" (submitColor)="addColor($event)"></app-color-form>

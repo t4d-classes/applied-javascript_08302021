@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { ColorHomeComponent } from './components/color-home/color-home.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorListItemComponent } from './components/color-list-item/color-list-item.component';
+import { ColorFormComponent } from './components/color-form/color-form.component';
 
 @NgModule({
   declarations: [
     ColorHomeComponent,
     ColorListComponent,
-    ColorListItemComponent
+    ColorListItemComponent,
+    ColorFormComponent
   ],
   imports: [
     CommonModule,
