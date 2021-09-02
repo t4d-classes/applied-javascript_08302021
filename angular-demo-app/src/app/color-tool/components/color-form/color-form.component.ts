@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NewColor } from '../../models/colors';
 
 @Component({
-  selector: 'app-color-form',
+  selector: '.app-color-form',
   templateUrl: './color-form.component.html',
   styleUrls: ['./color-form.component.css']
 })

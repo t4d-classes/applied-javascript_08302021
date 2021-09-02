@@ -1,11 +1,17 @@
-<form [formGroup]="colorForm">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
-  <label>
-    Hexcode:
-    <input type="text" formControlName="hexcode" />
-  </label>
-  <button (click)="doSubmitColor()">{{buttonText}}</button>
-</form>
+<ng-container [formGroup]="colorForm">
+  <li>
+    <label>
+      Name:
+      <input type="text" formControlName="name" />
+    </label>
+  </li>
+  <li>
+    <label>
+      Hexcode:
+      <input type="text" formControlName="hexcode" />
+    </label>
+  </li>
+  <li>
+    <button (click)="doSubmitColor()">{{buttonText}}</button>
+  </li>
+</ng-container>
