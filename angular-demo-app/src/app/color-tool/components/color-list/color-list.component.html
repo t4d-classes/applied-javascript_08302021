@@ -1,4 +1,5 @@
 <ul>
+  <li *ngIf="colors.length === 0">No colors.</li>
   <li class="app-color-list-item"
     *ngFor="let color of colors" [color]="color" ></li>
 </ul>

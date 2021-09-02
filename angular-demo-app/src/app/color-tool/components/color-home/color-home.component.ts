@@ -12,11 +12,7 @@ export class ColorHomeComponent implements OnInit {
 
   headerText = "Color Tool";
 
-  colors: Color[] = [
-    { id: 1, name : 'red', hexcode: 'ff0000'},
-    { id: 2, name : 'green', hexcode: '00ff00'},
-    { id: 3, name : 'blue', hexcode: '0000ff'},
-  ];
+  colors: Color[] = [];
 
   colorForm!: FormGroup;
   
