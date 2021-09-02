@@ -46,7 +46,7 @@ export const CarForm = ({ buttonText, onSubmitCar }) => {
       </label>
       <label>
         Price:
-        <input type="text" name="price"
+        <input type="number" name="price"
           value={carForm.price} onChange={change} />
       </label>
       <button type="button" onClick={submitCar}>{buttonText}</button>
