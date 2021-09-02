@@ -2,12 +2,9 @@
 
 <app-tool-header headerText="Color Tool"></app-tool-header>
 
-<ul>
-  <li *ngFor="let color of colors">
-    {{color.name}} {{color.hexcode}}
-  </li>
-</ul>
+<div class="app-color-list" [colors]="colors"></div>
 
+<section class="app-color-list" [colors]="colors"></section>
 
 <form [formGroup]="colorForm">
   <label>
