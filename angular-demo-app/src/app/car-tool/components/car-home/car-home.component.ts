@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Car } from '../../models/cars';
 
 
@@ -6,7 +6,8 @@ import { Car } from '../../models/cars';
 @Component({
   selector: 'app-car-home',
   templateUrl: './car-home.component.html',
-  styleUrls: ['./car-home.component.css']
+  styleUrls: ['./car-home.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class CarHomeComponent implements OnInit {
 
