@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Car, NewCar } from '../../models/cars';
+import { CarsDataService } from '../../services/cars-data.service';
 
 @Component({
   selector: 'app-car-home',
@@ -12,41 +13,31 @@ export class CarHomeComponent implements OnInit {
 
   headerText = "Car Tool";
 
-  cars: Car[] = [
-    { id: 1, make: 'Ford', model: 'Fusion Hybrid', year: 2018, color: 'blue', price: 45000 },
-    { id: 2, make: 'Tesla', model: 'S', year: 2019, color: 'red', price: 110000 },
-  ];
+  cars: Car[] = [];
 
   editCarId = -1;
 
+  constructor(private carsData: CarsDataService) { }
+
   ngOnInit(): void {
+    this.cars = this.carsData.all();
   }
 
   doAddCar(car: NewCar) {
-    this.cars = [
-      ...this.cars,
-      {
-        ...car,
-        id: Math.max(...this.cars.map(c => c.id), 0) + 1,
-      }
-    ];
+    this.carsData.append(car);
+    this.cars = this.carsData.all();
     this.editCarId = -1;
-
   }
 
   doSaveCar(car: Car) {
-    const newCars = [ ...this.cars ];
-    const carIndex = this.cars.findIndex(c => c.id === car.id);
-    newCars[carIndex] = {
-      ...newCars[carIndex],
-      ...car,
-    };
-    this.cars = newCars;
+    this.carsData.replace(car);
+    this.cars = this.carsData.all();
     this.editCarId = -1;
   }
 
   doDeleteCar(carId: number) {
-    this.cars = this.cars.filter(c => c.id !== carId);
+    this.carsData.remove(carId);
+    this.cars = this.carsData.all();
     this.editCarId = -1;
   }
 
