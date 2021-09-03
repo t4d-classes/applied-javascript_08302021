@@ -12,7 +12,7 @@ import { ToolFooter } from './ToolFooter';
 export const CarTool = ({ cars: initialCars }) => {
 
   const [ cars, refreshCars, addCar, saveCar, deleteCar ] =
-    useApi("/api/carsmemory");
+    useApi("/api/carsmongo");
 
   const [ editCarId, setEditCarId ] = useState(-1);
 
