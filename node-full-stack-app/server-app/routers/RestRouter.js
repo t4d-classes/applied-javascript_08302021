@@ -38,8 +38,53 @@ module.exports.createRestRouter = (Model) => {
 
   // Element/Member URL
   RestRouter.route("/:id")
-    .get()
-    .put()
-    .delete();
+    .get(async (req, res) => {
+
+      try {
+
+        if (!ObjectID.isValid(req.params.id)) {
+          logger.error("resource id is invalid: " + req.params.id);
+          res.sendStatus(400);
+          return;
+        }
+
+        const resource = await Model.findById(req.params.id);
+
+        if (resource === null) {
+          logger.error("resource with id " + req.params.id + " was not found");
+          res.sendStatus(404);
+          return;          
+        }
+
+        res.json(resource);
+
+      } catch (err) {
+        logger.error(err);
+        res.sendStatus(500);
+      }
+
+    })
+    .put(async (req, res) => {
+
+      try {
+        await Model.updateOne({ _id: req.params.id }, req.body);
+        res.sendStatus(204);
+      } catch (err) {
+        logger.error(err);
+        res.sendStatus(500);
+      }
+
+    })
+    .delete(async (req, res) => {
+
+      try {
+        await Model.deleteOne({ _id: req.params.id });
+        res.sendStatus(204);
+      } catch (err) {
+        logger.error(err);
+        res.sendStatus(500);
+      }
+
+    });
 
 };
