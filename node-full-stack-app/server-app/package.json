@@ -1,0 +1,15 @@
+{
+  "name": "server-app",
+  "version": "1.0.0",
+  "description": "Server app for the Applied JavaScript class",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "Eric Greene",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

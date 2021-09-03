@@ -1,0 +1,8 @@
+**/node_modules
+**/*.log
+**/.gitignore
+**/.git
+**/*.rest
+**/.env*
+**/*.md
+**/env.docker

@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: full-stack-app-deployment
+  labels:
+    app: full-stack-app
+spec:
+  selector:
+    matchLabels:
+      pod: http-pod
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: full-stack-app
+        pod: http-pod
+    spec:
+      containers:
+        - name: node-express
+          image: localhost:32000/tools-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: dbpass
+            - name: DB_CLUSTER_HOST
+              value: mongo-service:27017
+            - name: PORT
+              value: "80"
+            - name: LOG_LEVEL
+              value: warning
+            - name: NODE_ENV
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: full-stack-app-http-service
+  labels:
+    app: full-stack-app
+spec:
+  selector:
+    pod: http-pod
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: full-stack-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: public
+  labels:
+    app: full-stack-app
+spec:
+  rules:
+  - host: t4dprep0.databots.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: full-stack-app-http-service
+            port:
+              number: 8080
