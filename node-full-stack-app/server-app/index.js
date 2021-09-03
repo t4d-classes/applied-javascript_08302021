@@ -3,6 +3,7 @@ const express = require('express');
 
 require('dotenv').config();
 
+const { logger } = require('./logger');
 
 const {
   DB_USER, DB_PASS, DB_CLUSTER_HOST,
@@ -17,6 +18,7 @@ global.appToolsConn = mongoose.createConnection(
 );
 
 process.on('exit', () => {
+  logger.info('exiting application...');
   global.appToolsConn.close();
 });
 
@@ -33,6 +35,7 @@ if (NODE_ENV === 'development') {
 
   app.use('/', (req, res) => {
 
+    // http://localhost:3000 to call React Development server
     clientAppProxy.web(req, res, { target: CLIENT_APP_URL });
 
   } /* middleware function */);
@@ -42,3 +45,14 @@ if (NODE_ENV === 'development') {
   app.use('/', express.static('./public'));
 
 }
+
+app.listen(PORT, (err) => {
+
+  if (err) {
+    logger.error(err);
+    return;
+  }
+
+  logger.info(`server listening on port ${PORT}`);
+
+});
