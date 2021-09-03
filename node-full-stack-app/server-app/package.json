@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Server app for the Applied JavaScript class",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "Eric Greene",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1",
+    "mongoose": "^6.0.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
