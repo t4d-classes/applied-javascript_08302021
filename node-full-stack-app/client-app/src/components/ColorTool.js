@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { colorsPropType } from '../proptypes/colors';
 
 import { useList } from '../hooks/useList';

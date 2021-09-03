@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { carsPropType } from "../proptypes/cars";
 
-import { useList } from '../hooks/useList';
+import { useApi } from '../hooks/useApi';
 
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
@@ -11,23 +11,29 @@ import { ToolFooter } from './ToolFooter';
 
 export const CarTool = ({ cars: initialCars }) => {
 
-  const [ cars, addCar, saveCar, deleteCar ] =
-    useList([ ...initialCars ]);
+  const [ cars, refreshCars, addCar, saveCar, deleteCar ] =
+    useApi("/api/carsmemory");
 
   const [ editCarId, setEditCarId ] = useState(-1);
 
-  const appendCar = (car) => {
-    addCar(car);
+  useEffect(() => {
+
+    refreshCars();
+
+  }, [refreshCars])
+
+  const appendCar = async (car) => {
+    await addCar(car);
     setEditCarId(-1);
   };
 
-  const replaceCar = (car) => {
-    saveCar(car);
+  const replaceCar = async (car) => {
+    await saveCar(car);
     setEditCarId(-1);
   };
 
-  const removeCar = (carId) => {
-    deleteCar(carId);
+  const removeCar = async (carId) => {
+    await deleteCar(carId);
     setEditCarId(-1);
   };
 

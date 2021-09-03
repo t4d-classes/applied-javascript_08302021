@@ -29,7 +29,7 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
           value={carForm.year} onChange={change} /></td>
       <td><input type="text" name="color"
           value={carForm.color} onChange={change} /></td>
-      <td><input type="text" name="price"
+      <td><input type="number" name="price"
           value={carForm.price} onChange={change} /></td>
       <td>
         <button type="button" onClick={saveCar}>Save</button>

@@ -43,7 +43,7 @@ module.exports.createRestRouter = (initialItems) => {
     .put(async (req, res) => {
 
       const newItems = [...items];
-      const itemIndex = items.findIndex(c => c._id === req.params.id);
+      const itemIndex = items.findIndex(c => c._id === parseInt(req.params.id, 10));
       newItems[itemIndex] = {
         ...req.body,
       };
