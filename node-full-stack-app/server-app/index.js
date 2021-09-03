@@ -27,8 +27,8 @@ const { createRestRouter: createRestRouterMemory } = require('./routers/RestRout
 const { Car } = require('./models/car');
 
 const initialCars = [
-  { id: 1, make: 'Ford', model: 'Fusion', year: 2018, color: 'blue', price: 45000 },
-  { id: 2, make: 'Tesla', model: 'S', year: 2019, color: 'red', price: 110000 },
+  { _id: 1, make: 'Ford', model: 'Fusion', year: 2018, color: 'blue', price: 45000 },
+  { _id: 2, make: 'Tesla', model: 'S', year: 2019, color: 'red', price: 110000 },
 ];
 
 const app = express();

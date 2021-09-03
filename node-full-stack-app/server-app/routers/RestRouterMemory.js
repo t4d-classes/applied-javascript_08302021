@@ -11,7 +11,7 @@ module.exports.createRestRouter = (initialItems) => {
   // Collection URL
   RestRouter.route("/")
     .get(async (req, res) => {
-      return [ ...items ];
+      res.json([ ...items ]);
     })
     .post(async (req, res) => {
 
@@ -31,7 +31,7 @@ module.exports.createRestRouter = (initialItems) => {
   // Element/Member URL
   RestRouter.route("/:id")
     .get(async (req, res) => {
-      const item = items.find(i => i.id === parseInt(req.params.id, 10));
+      const item = items.find(i => i._id === parseInt(req.params.id, 10));
 
       if (item === null) {
         logger.error("unable to find it with id " + req.params.id);
@@ -43,7 +43,7 @@ module.exports.createRestRouter = (initialItems) => {
     .put(async (req, res) => {
 
       const newItems = [...items];
-      const itemIndex = items.findIndex(c => c.id === req.params.id);
+      const itemIndex = items.findIndex(c => c._id === req.params.id);
       newItems[itemIndex] = {
         ...req.body,
       };
@@ -55,7 +55,7 @@ module.exports.createRestRouter = (initialItems) => {
     })
     .delete(async (req, res) => {
 
-      items = items.filter(c => c.id !== parseInt(req.params.id, 10));
+      items = items.filter(c => c._id !== parseInt(req.params.id, 10));
       res.sendStatus(204);
 
     });
