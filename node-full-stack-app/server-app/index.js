@@ -4,9 +4,6 @@ const express = require('express');
 require('dotenv').config();
 
 const { logger } = require('./logger');
-const { createRestRouter: createRestRouterMongo } = require('./routers/RestRouterMongo');
-const { createRestRouter: createRestRouterMemory } = require('./routers/RestRouterMemory');
-const { Car } = require('./models/car');
 
 const {
   DB_USER, DB_PASS, DB_CLUSTER_HOST,
@@ -24,6 +21,10 @@ process.on('exit', () => {
   logger.info('exiting application...');
   global.appToolsConn.close();
 });
+
+const { createRestRouter: createRestRouterMongo } = require('./routers/RestRouterMongo');
+const { createRestRouter: createRestRouterMemory } = require('./routers/RestRouterMemory');
+const { Car } = require('./models/car');
 
 const initialCars = [
   { id: 1, make: 'Ford', model: 'Fusion', year: 2018, color: 'blue', price: 45000 },

@@ -1,0 +1,16 @@
+
+
+GET http://localhost:8080/api/carsmongo HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/carsmongo HTTP/1.1
+Content-Type: application/json
+
+{
+  "make": "Ford",
+  "model": "Fusion Hybrid",
+  "year": 2018,
+  "color": "blue",
+  "price": 45000
+}

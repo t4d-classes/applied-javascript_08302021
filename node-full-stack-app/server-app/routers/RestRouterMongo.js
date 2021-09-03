@@ -87,4 +87,6 @@ module.exports.createRestRouter = (Model) => {
 
     });
 
+    return RestRouter;
+
 };

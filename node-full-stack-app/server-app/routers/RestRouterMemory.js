@@ -60,4 +60,6 @@ module.exports.createRestRouter = (initialItems) => {
 
     });
 
+    return RestRouter;
+
 };
