@@ -8,6 +8,7 @@ import { CarHomeComponent } from './components/car-home/car-home.component';
 import { CarTableComponent } from './components/car-table/car-table.component';
 import { CarViewRowComponent } from './components/car-view-row/car-view-row.component';
 import { CarFormComponent } from './components/car-form/car-form.component';
+import { CarEditRowComponent } from './components/car-edit-row/car-edit-row.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CarFormComponent } from './components/car-form/car-form.component';
     CarHomeComponent,
     CarTableComponent,
     CarViewRowComponent,
-    CarFormComponent
+    CarFormComponent,
+    CarEditRowComponent
   ],
   imports: [
     CommonModule,

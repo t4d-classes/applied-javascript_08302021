@@ -14,8 +14,11 @@
     <tr *ngIf="cars.length === 0">
       <td colspan="6">No Cars.</td>
     </tr>
-    <tr class="app-car-view-row"
-      *ngFor="let car of cars" [car]="car"
-      (deleteCar)="doDeleteCar($event)"></tr>
+    <ng-container *ngFor="let car of cars">
+      <tr *ngIf="car.id === editCarId" class="app-car-edit-row" [car]="car"
+        (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()"></tr>
+      <tr *ngIf="car.id !== editCarId" class="app-car-view-row" [car]="car"
+        (editCar)="doEditCar($event)" (deleteCar)="doEditCar($event)"></tr>
+    </ng-container>
   </tbody>
 </table>
